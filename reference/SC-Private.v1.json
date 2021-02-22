@@ -16,7 +16,7 @@
   "paths": {
     "/businesses.{format}": {
       "get": {
-        "summary": "Your GET endpoint",
+        "summary": "List Method",
         "tags": [],
         "responses": {},
         "operationId": "get-businesses.",
@@ -42,63 +42,362 @@
           "required": true,
           "description": "XML or JSON"
         }
-      ]
+      ],
+      "post": {
+        "summary": "Create-or-Update Method",
+        "operationId": "post-businesses.-format",
+        "description": "Creates or updates a business. It does this by looking up the business by external_id, if it cannot find that business it creates it. If you would rather an error is returned when a business does not exist, use the Update method.\nAll new businesses are created in a pending state. The corresponding BRP will not be accessible until the business has been activated.",
+        "parameters": [
+          {
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query",
+            "name": " external_id ",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "name",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "in": "query",
+            "name": "show_hours",
+            "description": "a boolean value indicating whether to display a business’ operating hours on their BRP. 1 and 0 can be used for True and False respectively."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "address[line_1]"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "​address[line_2]"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "​address[line_3]"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "address[municipality]",
+            "description": "would correspond to City for US-based addresses"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "address[region]",
+            "description": "For US, provide the 2-letter state abbreviation"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "address[postcode]",
+            "description": "Zip code"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "address[country]",
+            "description": "The two letter country code (ISO 3166 Alpha-2)"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "website"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "phone"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "email",
+            "description": "this is a public email address for contacting the business"
+          }
+        ]
+      }
+    },
+    "/businesses/{external_id}.{format}": {
+      "get": {
+        "summary": "Show Method",
+        "tags": [],
+        "responses": {},
+        "operationId": "get-businesses-external_id-.-format",
+        "description": "Returns current detailed information for a partner business."
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "external_id",
+          "in": "path",
+          "required": true,
+          "description": "Unique identifier for your business"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "format",
+          "in": "path",
+          "required": true,
+          "description": "XML or JSON"
+        }
+      ],
+      "put": {
+        "summary": "Update Method",
+        "operationId": "put-businesses-external_id-.-format",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Updates an existing business. Returns an error if the business can not be found."
+      },
+      "delete": {
+        "summary": "Destroy Method",
+        "operationId": "delete-businesses-external_id-.-format",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Completely removes a pending business. This method will only work with pending businesses. Once a business has been activated it can only be deactivated, not permanently deleted."
+      }
+    },
+    "/businesses/{external_id}/activate.{format}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "external_id",
+          "in": "path",
+          "required": true,
+          "description": "Unique identifier for your business"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "format",
+          "in": "path",
+          "required": true,
+          "description": "XML or JSON"
+        }
+      ],
+      "put": {
+        "summary": "Activate Method",
+        "operationId": "put-businesses-external_id-activate.-format",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Activate a pending or deactivated business."
+      }
+    },
+    "/businesses/{external_id}/deactivate.{format}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "external_id",
+          "in": "path",
+          "required": true,
+          "description": "Unique identifier for your business"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "format",
+          "in": "path",
+          "required": true,
+          "description": "XML or JSON"
+        }
+      ],
+      "put": {
+        "summary": "Deactivate Method",
+        "operationId": "put-businesses-external_id-deactivate.-format",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Deactivate an active business."
+      }
     }
   },
   "components": {
     "schemas": {
-      "User": {
-        "title": "User",
-        "type": "object",
+      "Business": {
         "description": "",
-        "x-examples": {
-          "Alice Smith": {
-            "id": 142,
-            "firstName": "Alice",
-            "lastName": "Smith",
-            "email": "alice.smith@gmail.com",
-            "dateOfBirth": "1997-10-31",
-            "emailVerified": true,
-            "signUpDate": "2019-08-24"
-          }
-        },
+        "type": "object",
         "properties": {
           "id": {
-            "type": "integer",
-            "description": "Unique identifier for the given user."
+            "type": "integer"
           },
-          "firstName": {
-            "type": "string"
-          },
-          "lastName": {
-            "type": "string"
-          },
-          "email": {
+          "external_id": {
             "type": "string",
-            "format": "email"
+            "minLength": 1
           },
-          "dateOfBirth": {
+          "name": {
             "type": "string",
-            "format": "date",
-            "example": "1997-10-31"
+            "minLength": 1
           },
-          "emailVerified": {
-            "type": "boolean",
-            "description": "Set to true if the user's email has been verified."
+          "state": {
+            "type": "integer"
           },
-          "createDate": {
+          "rating_avg": {
+            "type": "number"
+          },
+          "recommend_pct": {
+            "type": "number"
+          },
+          "brp_url": {
             "type": "string",
-            "format": "date",
-            "description": "The date that the user was created."
+            "minLength": 1
+          },
+          "show_hours": {
+            "type": "boolean"
+          },
+          "address": {
+            "type": "object",
+            "properties": {
+              "line_1": {
+                "type": "string",
+                "minLength": 1
+              },
+              "municipality": {
+                "type": "string",
+                "minLength": 1
+              },
+              "postcode": {
+                "type": "string",
+                "minLength": 1
+              },
+              "region": {
+                "type": "string",
+                "minLength": 1
+              },
+              "latitude": {
+                "type": "number",
+                "format": "float"
+              },
+              "longitude": {
+                "type": "number"
+              },
+              "line_2": {
+                "type": "string"
+              },
+              "line_3": {
+                "type": "string"
+              },
+              "country": {
+                "type": "string"
+              }
+            }
+          },
+          "phone": {
+            "type": "string",
+            "minLength": 1
+          },
+          "website": {
+            "type": "string",
+            "minLength": 1
+          },
+          "email_address": {
+            "type": "string",
+            "minLength": 1
+          },
+          "about": {
+            "type": "string",
+            "minLength": 1
+          },
+          "category_1": {
+            "type": "integer"
+          },
+          "category_2": {
+            "type": "integer"
+          },
+          "category_3": {
+            "type": "integer"
           }
         },
         "required": [
-          "id",
-          "firstName",
-          "lastName",
-          "email",
-          "emailVerified"
-        ]
+          "external_id",
+          "name",
+          "website",
+          "email_address",
+          "about",
+          "category_1"
+        ],
+        "x-examples": {
+          "Cory's Magic Carpets": {
+            "id": 0,
+            "external_id": "string",
+            "name": "string",
+            "state": 0,
+            "rating_avg": 0,
+            "recommend_pct": 0,
+            "brp_url": "string",
+            "show_hours": true,
+            "address": {
+              "line_1": "string",
+              "municipality": "string",
+              "postcode": "string",
+              "region": "string",
+              "latitude": 0,
+              "longitude": 0,
+              "line_2": "string",
+              "line_3": "string",
+              "country": "string"
+            },
+            "phone": "string",
+            "website": "string",
+            "email_address": "string",
+            "about": "string",
+            "category_1": 0,
+            "category_2": 0,
+            "category_3": 0
+          }
+        }
       }
     },
     "securitySchemes": {
