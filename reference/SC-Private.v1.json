@@ -401,16 +401,16 @@
       }
     },
     "securitySchemes": {
-      "api_key": {
-        "name": "API Key",
+      "API Key": {
         "type": "apiKey",
-        "in": "query"
+        "in": "query",
+        "name": "api_key"
       }
     }
   },
   "security": [
     {
-      "api_key": []
+      "API Key": []
     }
   ]
 }
