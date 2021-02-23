@@ -18,7 +18,242 @@
       "get": {
         "summary": "List Method",
         "tags": [],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": "Success!",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "current_page": {
+                      "type": "number"
+                    },
+                    "per_page": {
+                      "type": "number"
+                    },
+                    "total_entries": {
+                      "type": "number"
+                    },
+                    "total_pages": {
+                      "type": "number"
+                    },
+                    "businesses": {
+                      "type": "array",
+                      "uniqueItems": true,
+                      "minItems": 1,
+                      "items": {
+                        "required": [
+                          "id",
+                          "external_id",
+                          "name",
+                          "state",
+                          "review_count",
+                          "rating_count",
+                          "rating_avg",
+                          "recommend_pct",
+                          "brp_url",
+                          "departments_enabled",
+                          "review_reach_enabled"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "number"
+                          },
+                          "external_id": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "name": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "state": {
+                            "type": "number"
+                          },
+                          "review_count": {
+                            "type": "number"
+                          },
+                          "rating_count": {
+                            "type": "number"
+                          },
+                          "rating_avg": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "recommend_pct": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "brp_url": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "departments_enabled": {
+                            "type": "boolean"
+                          },
+                          "review_reach_enabled": {
+                            "type": "boolean"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "current_page",
+                    "per_page",
+                    "total_entries",
+                    "total_pages",
+                    "businesses"
+                  ]
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "current_page": 1,
+                      "per_page": 100,
+                      "total_entries": 10,
+                      "total_pages": 1,
+                      "businesses": [
+                        {
+                          "id": 2785,
+                          "external_id": "1016861",
+                          "name": "Gates Auto Body Alphorn",
+                          "state": -2,
+                          "review_count": 85,
+                          "rating_count": 89,
+                          "rating_avg": "4.719101",
+                          "recommend_pct": "98.8764",
+                          "brp_url": "https://scstaging.surecritic.com/reviews/gates-auto-body-alphorn",
+                          "departments_enabled": false,
+                          "review_reach_enabled": false
+                        },
+                        {
+                          "id": 3754,
+                          "external_id": "238",
+                          "name": "Davidson Auto Body 1 Collision Network",
+                          "state": -2,
+                          "review_count": 31,
+                          "rating_count": 31,
+                          "rating_avg": "4.8709678",
+                          "recommend_pct": "96.77419",
+                          "brp_url": "https://scstaging.surecritic.com/reviews/davidson-auto-body-1-collision-network",
+                          "departments_enabled": false,
+                          "review_reach_enabled": false
+                        },
+                        {
+                          "id": 3755,
+                          "external_id": "3013628",
+                          "name": "First Choice Collision Center",
+                          "state": -2,
+                          "review_count": 25,
+                          "rating_count": 26,
+                          "rating_avg": "4.730769",
+                          "recommend_pct": "88.46154",
+                          "brp_url": "https://scstaging.surecritic.com/reviews/first-choice-collision-center",
+                          "departments_enabled": false,
+                          "review_reach_enabled": false
+                        },
+                        {
+                          "id": 2786,
+                          "external_id": "3014228",
+                          "name": "Marquis Auto Body",
+                          "state": -2,
+                          "review_count": 220,
+                          "rating_count": 222,
+                          "rating_avg": "4.963964",
+                          "recommend_pct": "100.0",
+                          "brp_url": "https://scstaging.surecritic.com/reviews/marquis-auto-body",
+                          "departments_enabled": false,
+                          "review_reach_enabled": false
+                        },
+                        {
+                          "id": 3807,
+                          "external_id": "3950",
+                          "name": "Bay Custom Auto",
+                          "state": -2,
+                          "review_count": 1004,
+                          "rating_count": 1014,
+                          "rating_avg": "4.7968472",
+                          "recommend_pct": "97.83038",
+                          "brp_url": "https://scstaging.surecritic.com/reviews/bay-custom-auto",
+                          "departments_enabled": false,
+                          "review_reach_enabled": false
+                        },
+                        {
+                          "id": 3383,
+                          "external_id": "4335",
+                          "name": "Prestige Auto Body & Frame",
+                          "state": -2,
+                          "review_count": 29,
+                          "rating_count": 29,
+                          "rating_avg": "4.827586",
+                          "recommend_pct": "100.0",
+                          "brp_url": "https://scstaging.surecritic.com/reviews/prestige-auto-body-and-frame",
+                          "departments_enabled": false,
+                          "review_reach_enabled": false
+                        },
+                        {
+                          "id": 3833,
+                          "external_id": "593",
+                          "name": "Perryville CRASH1",
+                          "state": -2,
+                          "review_count": 10,
+                          "rating_count": 10,
+                          "rating_avg": "4.6000004",
+                          "recommend_pct": "90.0",
+                          "brp_url": "https://scstaging.surecritic.com/reviews/perryville-crash1",
+                          "departments_enabled": false,
+                          "review_reach_enabled": false
+                        },
+                        {
+                          "id": 2609,
+                          "external_id": "914191",
+                          "name": "Southwest Collision",
+                          "state": -2,
+                          "review_count": 143,
+                          "rating_count": 143,
+                          "rating_avg": "4.7762237",
+                          "recommend_pct": "98.6014",
+                          "brp_url": "https://scstaging.surecritic.com/reviews/southwest-collision",
+                          "departments_enabled": false,
+                          "review_reach_enabled": false
+                        },
+                        {
+                          "id": 3382,
+                          "external_id": "926139",
+                          "name": "Custom Body Works",
+                          "state": -2,
+                          "review_count": 47,
+                          "rating_count": 48,
+                          "rating_avg": "4.958333",
+                          "recommend_pct": "100.0",
+                          "brp_url": "https://scstaging.surecritic.com/reviews/custom-body-works",
+                          "departments_enabled": false,
+                          "review_reach_enabled": false
+                        },
+                        {
+                          "id": 3815,
+                          "external_id": "937520",
+                          "name": "Polo Collision",
+                          "state": -2,
+                          "review_count": 15,
+                          "rating_count": 15,
+                          "rating_avg": "5.0",
+                          "recommend_pct": "100.0",
+                          "brp_url": "https://scstaging.surecritic.com/reviews/polo-collision",
+                          "departments_enabled": false,
+                          "review_reach_enabled": false
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
         "operationId": "get-businesses.",
         "description": "Returns a paged list of businesses controlled by the partner. The API returns up to 30 businesses per request. Results are sorted by external_id.",
         "parameters": [
