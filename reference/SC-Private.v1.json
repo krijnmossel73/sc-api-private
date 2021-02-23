@@ -2,8 +2,17 @@
   "openapi": "3.0.0",
   "info": {
     "title": "SC-Private",
-    "version": "1.0"
+    "version": "1.0",
+    "description": "SureCritic's Private API",
+    "contact": {
+      "name": "None"
+    }
   },
+  "tags": [
+    {
+      "name": "Businesses"
+    }
+  ],
   "servers": [
     {
       "url": "https://scstaging.surecritic.com/api"
@@ -395,7 +404,10 @@
           "403": {
             "$ref": "#/components/responses/403"
           }
-        }
+        },
+        "tags": [
+          "Businesses"
+        ]
       }
     },
     "/businesses/{external_id}.{format}": {
@@ -443,7 +455,10 @@
             "description": "OK"
           }
         },
-        "description": "Updates an existing business. Returns an error if the business can not be found."
+        "description": "Updates an existing business. Returns an error if the business can not be found.",
+        "tags": [
+          "Businesses"
+        ]
       },
       "delete": {
         "summary": "Destroy Method",
@@ -453,7 +468,10 @@
             "description": "OK"
           }
         },
-        "description": "Completely removes a pending business. This method will only work with pending businesses. Once a business has been activated it can only be deactivated, not permanently deleted."
+        "description": "Completely removes a pending business. This method will only work with pending businesses. Once a business has been activated it can only be deactivated, not permanently deleted.",
+        "tags": [
+          "Businesses"
+        ]
       }
     },
     "/businesses/{external_id}/activate.{format}": {
