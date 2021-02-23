@@ -17,7 +17,9 @@
     "/businesses.{format}": {
       "get": {
         "summary": "List Method",
-        "tags": [],
+        "tags": [
+          "Businesses"
+        ],
         "responses": {
           "200": {
             "description": "Success!",
@@ -252,6 +254,9 @@
                 }
               }
             }
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
           }
         },
         "operationId": "get-businesses.",
@@ -382,14 +387,31 @@
             "name": "email",
             "description": "this is a public email address for contacting the business"
           }
-        ]
+        ],
+        "responses": {
+          "200": {
+            "description": "Success!"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          }
+        }
       }
     },
     "/businesses/{external_id}.{format}": {
       "get": {
         "summary": "Show Method",
-        "tags": [],
-        "responses": {},
+        "tags": [
+          "Businesses"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success!"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          }
+        },
         "operationId": "get-businesses-external_id-.-format",
         "description": "Returns current detailed information for a partner business."
       },
@@ -463,7 +485,10 @@
             "description": "OK"
           }
         },
-        "description": "Activate a pending or deactivated business."
+        "description": "Activate a pending or deactivated business.",
+        "tags": [
+          "Businesses"
+        ]
       }
     },
     "/businesses/{external_id}/deactivate.{format}": {
@@ -495,7 +520,10 @@
             "description": "OK"
           }
         },
-        "description": "Deactivate an active business."
+        "description": "Deactivate an active business.",
+        "tags": [
+          "Businesses"
+        ]
       }
     }
   },
@@ -640,6 +668,11 @@
         "type": "apiKey",
         "in": "query",
         "name": "api_key"
+      }
+    },
+    "responses": {
+      "403": {
+        "description": "Not Authorized. Your API-KEY was missing or invalid"
       }
     }
   },
