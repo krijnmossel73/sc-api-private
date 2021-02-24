@@ -278,6 +278,27 @@
             "in": "query",
             "name": "page",
             "description": "The page number for the request. The default page is 1."
+          },
+          {
+            "$ref": "#/components/parameters/Access-Control-Allow-Origin"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Access-Control-Allow-Methods",
+            "description": "GET, PUT, POST, DELETE",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Access-Control-Request-Headers",
+            "description": "accept, origin, x-requested-with",
+            "required": true
           }
         ]
       },
@@ -691,6 +712,17 @@
     "responses": {
       "403": {
         "description": "Not Authorized. Your API-KEY was missing or invalid"
+      }
+    },
+    "parameters": {
+      "Access-Control-Allow-Origin": {
+        "name": "Access-Control-Allow-Origin",
+        "in": "header",
+        "required": true,
+        "schema": {
+          "type": "string"
+        },
+        "description": "https://surecritic.stoplight.io"
       }
     }
   },
