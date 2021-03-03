@@ -55,19 +55,7 @@
                       "uniqueItems": true,
                       "minItems": 1,
                       "items": {
-                        "required": [
-                          "id",
-                          "external_id",
-                          "name",
-                          "state",
-                          "review_count",
-                          "rating_count",
-                          "rating_avg",
-                          "recommend_pct",
-                          "brp_url",
-                          "departments_enabled",
-                          "review_reach_enabled"
-                        ],
+                        "type": "object",
                         "properties": {
                           "id": {
                             "type": "number"
@@ -107,7 +95,15 @@
                           "review_reach_enabled": {
                             "type": "boolean"
                           }
-                        }
+                        },
+                        "required": [
+                          "id",
+                          "external_id",
+                          "name",
+                          "state",
+                          "review_count",
+                          "rating_count"
+                        ]
                       }
                     }
                   },
@@ -115,8 +111,7 @@
                     "current_page",
                     "per_page",
                     "total_entries",
-                    "total_pages",
-                    "businesses"
+                    "total_pages"
                   ]
                 },
                 "examples": {
@@ -541,6 +536,188 @@
         "description": "Deactivate an active business.",
         "tags": [
           "Businesses"
+        ]
+      }
+    },
+    "/businesses/{external_id}/hours.{format}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "external_id",
+          "in": "path",
+          "required": true,
+          "description": "Unique identifier for your business"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "format",
+          "in": "path",
+          "required": true,
+          "description": "XML or JSON"
+        }
+      ],
+      "get": {
+        "summary": "Show method",
+        "responses": {},
+        "operationId": "get-businesses-external_id-hours.-format",
+        "description": "Returns the current business hours.\n\nThis resource allows for the maintenance of a business’ displayed operating hours. For every day of the week, each business can either be “closed” or have up to two start and end times. For the purposes of this API, day of the week is expressed as an integer between 0 and 6 where 0 = Monday, 1 = Tuesday, ..., 6 = Sunday. All time parameters should be passed in the format HH:MM using a 24-hour clock. Time zones are not used for these display purposes.",
+        "tags": [
+          "Business Hours"
+        ]
+      },
+      "put": {
+        "summary": "Update method",
+        "operationId": "put-businesses-external_id-hours.-format",
+        "responses": {
+          "200": {
+            "description": "Success!"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          }
+        },
+        "description": "Populates new business hours for this business.",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "hours[​day_of_week]​[closed] ",
+            "description": "a boolean value indicating the business is open or closed on this day - 0 and 1 would be open and closed respectively."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "hours[​day_of_week]​[start_time_1]",
+            "description": "the start time in HH:MM format"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "hours[​day_of_week]​[end_time_1]",
+            "description": "the end time"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "hours[​day_of_week]​[start_time_2]",
+            "description": "the start time"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "hours[​day_of_week][end_time_2]",
+            "description": "the end time"
+          }
+        ]
+      }
+    },
+    "/businesses/{external_id}/users.{format}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "external_id",
+          "in": "path",
+          "required": true,
+          "description": "Unique identifier for your business"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "format",
+          "in": "path",
+          "required": true,
+          "description": "XML or JSON"
+        }
+      ],
+      "get": {
+        "summary": "List Method (Returns a list of users who can control this business)",
+        "tags": [
+          "Business Users"
+        ],
+        "responses": {},
+        "operationId": "get-businesses-external_id-users.-format",
+        "description": "This resource allows for the creation and authorization of users to administer a business via the SureCritic website. Users within SureCritic are identified by their email address. When granting\na user rights to a given business, the API will create the user if it does not exist in the database. Removing a user’s rights to a business does not remove them from SureCritic, only their rights to administer that business."
+      },
+      "post": {
+        "summary": "Add method",
+        "operationId": "post-businesses-external_id-users.-format",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Grants the user rights to administer this business. The user will be emailed to notify them of their new status. Existing users under this partner account can be added to a business just by passing the external id. If it is desired to add or create users, pass email and name fields in addition to the external id.",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "​email_address",
+            "description": "the email address of the user to be granted rights. It can be omitted if passing ​external_id ​of a user already created under this partner account.",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "external_id",
+            "description": "an identifier that allows you to later update attributes of this user via the Users Resource. Can be used in lieu of ​email_address ​when adding existing users.",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "​first_name"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "last_name"
+          }
+        ]
+      },
+      "delete": {
+        "summary": "Remove method",
+        "operationId": "delete-businesses-external_id-users.-format",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Removes a user's rights to administer this business.",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "email_address",
+            "required": true,
+            "description": "the email address of the user to be removed"
+          }
         ]
       }
     }
