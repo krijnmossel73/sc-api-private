@@ -622,6 +622,9 @@
             "name": "hours[​day_of_week][end_time_2]",
             "description": "the end time"
           }
+        ],
+        "tags": [
+          "Business Hours"
         ]
       }
     },
@@ -697,6 +700,9 @@
             "in": "query",
             "name": "last_name"
           }
+        ],
+        "tags": [
+          "Business Users"
         ]
       },
       "delete": {
@@ -718,6 +724,9 @@
             "required": true,
             "description": "the email address of the user to be removed"
           }
+        ],
+        "tags": [
+          "Business Users"
         ]
       }
     }
