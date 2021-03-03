@@ -562,7 +562,11 @@
       ],
       "get": {
         "summary": "Show method",
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": "Success!"
+          }
+        },
         "operationId": "get-businesses-external_id-hours.-format",
         "description": "Returns the current business hours.\n\nThis resource allows for the maintenance of a business’ displayed operating hours. For every day of the week, each business can either be “closed” or have up to two start and end times. For the purposes of this API, day of the week is expressed as an integer between 0 and 6 where 0 = Monday, 1 = Tuesday, ..., 6 = Sunday. All time parameters should be passed in the format HH:MM using a 24-hour clock. Time zones are not used for these display purposes.",
         "tags": [
@@ -650,13 +654,17 @@
         }
       ],
       "get": {
-        "summary": "List Method (Returns a list of users who can control this business)",
+        "summary": "List Method",
         "tags": [
           "Business Users"
         ],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": "Success!"
+          }
+        },
         "operationId": "get-businesses-external_id-users.-format",
-        "description": "This resource allows for the creation and authorization of users to administer a business via the SureCritic website. Users within SureCritic are identified by their email address. When granting\na user rights to a given business, the API will create the user if it does not exist in the database. Removing a user’s rights to a business does not remove them from SureCritic, only their rights to administer that business."
+        "description": "Returns a list of users who can control this business\n\nThis resource allows for the creation and authorization of users to administer a business via the SureCritic website. Users within SureCritic are identified by their email address. When granting\na user rights to a given business, the API will create the user if it does not exist in the database. Removing a user’s rights to a business does not remove them from SureCritic, only their rights to administer that business."
       },
       "post": {
         "summary": "Add method",
@@ -722,11 +730,584 @@
             "in": "query",
             "name": "email_address",
             "required": true,
-            "description": "the email address of the user to be removed"
+            "description": "the email address of the user whose rights are to be removed"
           }
         ],
         "tags": [
           "Business Users"
+        ]
+      }
+    },
+    "/businesses/{external_business_id}/reviews.{format}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "external_business_id",
+          "in": "path",
+          "required": true,
+          "description": "Unique identifier for your business"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "format",
+          "in": "path",
+          "required": true,
+          "description": "XML or JSON"
+        }
+      ],
+      "get": {
+        "summary": "List Method",
+        "tags": [
+          "Business Reviews"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success!"
+          }
+        },
+        "operationId": "get-businesses-external_id-reviews.-format",
+        "description": "Returns a paged list of reviews controlled by the partner business. The API returns up to 30 reviews per request. Results are sorted by created_date ascending.\n\nThis is the primary interface for creating reviews within the SureCritic API. Reviews are identified by your own unique identifier referred to as the external_id. The external_id, as well as the business_external_id, is required whenever creating reviews.",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "page",
+            "description": "The page number for the request. The default page is 1."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "​page_size",
+            "description": "The number of reviews returned in the query."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "since",
+            "description": "optional filter allowing only reviews since the given date. It should be in the format YYYY-MM-DD. The since parameter is inclusive of the passed date."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "before",
+            "description": "optional filter allowing only reviews before the given date. It should be in the format YYYY-MM-DD. The parameter is exclusive of the passed date."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "customer_external_id",
+            "description": "filter reviews by customer"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "service_order_id"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "email_address"
+          }
+        ]
+      },
+      "post": {
+        "summary": "Create Method",
+        "operationId": "post-businesses-external_business_id-reviews.-format",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Creates a review.",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "external_id",
+            "required": true,
+            "description": "the external id of the review."
+          },
+          {
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query",
+            "name": "rating",
+            "description": "the overall rating as a value between 1 and 5",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "in": "query",
+            "name": "recommends",
+            "description": " a boolean value indicating whether the reviewer would recommend the business to a friend. 0 and 1 are used for “does not recommend” and “recommends” respectively."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "comments",
+            "description": "text of the review"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "​first_name",
+            "description": "the customer/reviewer’s first name"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "​last_name",
+            "description": "the customer/reviewer’s last name"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "email_address",
+            "description": "the customer/reviewer’s email address"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "municipality",
+            "description": "city or township of the customer/reviewer"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "region",
+            "description": "of the customer/reviewer; for US, use the 2-letter state abbreviation"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "postcode",
+            "description": "zip code of the customer/reviewer",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "country",
+            "description": "The two letter country code (ISO 3166 Alpha-2). defaults to US."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "review_date",
+            "description": "the date the review was created in the format YYYY-MM-DD, this defaults to the current date"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "service_date",
+            "description": "the date of service in the format YYYY-MM-DD.",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "service_performed",
+            "description": "the short description of the service performed, such as “Collision Repair”"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "service_order_id",
+            "description": "an identifier for the business/partner to indicate which visit the review corresponds to."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "year",
+            "description": "The Model Year of the vehicle/item serviced"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "make",
+            "description": "The Make of the vehicle/item serviced"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "description": "The Model of the vehicle/item serviced",
+            "name": "model"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "original_review_id",
+            "description": "if creating a ReScore review, pass the id of the original review"
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "in": "query",
+            "name": "third_person",
+            "description": "a boolean value indicating whether the review was written in third person prose. Defaults to 0 (first person)."
+          },
+          {
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query",
+            "name": "department_id",
+            "description": "a numeric value to support business that have more than one department. Current values include sales = 1, service = 2, collision = 3."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "custom_fields[​field_identifier]​",
+            "description": "a value for any partner-specific custom fields, replacing ​field_identifier w​ ith the appropriate value. Multiple custom fields can be specified."
+          }
+        ],
+        "tags": [
+          "Business Reviews"
+        ]
+      }
+    },
+    "/businesses/{external_business_id}/reviews/{external_review_id}.{format}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "external_business_id",
+          "in": "path",
+          "required": true,
+          "description": "Unique identifier for your business"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "external_review_id",
+          "in": "path",
+          "required": true,
+          "description": "Unique identifier for the review"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "format",
+          "in": "path",
+          "required": true,
+          "description": "XML or JSON"
+        }
+      ],
+      "get": {
+        "summary": "Show Method",
+        "tags": [
+          "Business Reviews"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success!"
+          }
+        },
+        "operationId": "get-businesses-external_business_id-reviews-external_review_id-.-format",
+        "description": "Returns current detailed information for a specific business review"
+      }
+    },
+    "/businesses/{external_business_id}/feedback_requests.{format}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "external_business_id",
+          "in": "path",
+          "required": true,
+          "description": "Unique identifier for your business"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "format",
+          "in": "path",
+          "required": true,
+          "description": "XML or JSON"
+        }
+      ],
+      "get": {
+        "summary": "List Method",
+        "tags": [
+          "Business Feedback Requests"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success!"
+          }
+        },
+        "operationId": "get-businesses-external_business_id-feedback_requests.-format",
+        "description": "Returns a paged list of feedback requests for the partner business. The API returns up to 30 feedback requests per request. Results are sorted by created_date descending.\n\nThis is the primary interface for creating feedback requests within the SureCritic API. Feedback requests encompass ReviewReach requests, and will include standard review requests in the future.",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "page",
+            "description": "The page number for the request. The default page is 1."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "​page_size",
+            "description": "The number of feedback requests returned in the query."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "since",
+            "description": "optional filter allowing only feedback requests since the given date. It should be in the format YYYY-MM-DD. The since parameter is inclusive of the passed date."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "before",
+            "description": "optional filter allowing only feedback requests before the given date. It should be in the format YYYY-MM-DD. The parameter is exclusive of the passed date."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "contact_external_id",
+            "description": "filter requests by customer"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "external_transaction_id"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "email_address"
+          }
+        ]
+      },
+      "post": {
+        "summary": "Create Method",
+        "operationId": "post-businesses-external_business_id-feedback_requests.-format",
+        "responses": {
+          "200": {
+            "description": "Success!"
+          }
+        },
+        "description": "Creates a new feedback request.",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "contact_external_id",
+            "description": "an external identifier for this customer"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "​first_name",
+            "description": "the customer/reviewer’s first name"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "​last_name",
+            "description": "the customer/reviewer’s last name"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "email_address",
+            "description": "the customer/reviewer’s email address"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "municipality",
+            "description": "city or township of the customer/reviewer"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "region",
+            "description": "of the customer/reviewer; for US, use the 2-letter state abbreviation"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "postcode",
+            "description": "zip code of the customer/reviewer"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "country",
+            "description": "The two letter country code (ISO 3166 Alpha-2). defaults to US."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "year",
+            "description": "The Model Year of the vehicle/item serviced"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "make",
+            "description": "The Make of the vehicle/item serviced"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "description": "The Model of the vehicle/item serviced",
+            "name": "model"
+          },
+          {
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query",
+            "name": "department_id",
+            "description": "a numeric value to support business that have more than one department. Current values include sales = 1, service = 2, collision = 3."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "phone_number",
+            "description": "​the phone number for the customer",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "transaction_external_id",
+            "description": "an identifier for the business/partner to indicate which visit the review corresponds to. For example, the service order id or repair order id."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "transaction_amount",
+            "description": "the dollar amount of the related transaction"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "​transaction_description",
+            "description": "a string description of the transaction"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "vin",
+            "description": "The vehicle identification number or serial number for the product referenced"
+          }
+        ],
+        "tags": [
+          "Business Feedback Requests"
         ]
       }
     }
