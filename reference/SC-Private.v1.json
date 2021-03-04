@@ -10,6 +10,21 @@
   },
   "tags": [
     {
+      "name": "Business Hours"
+    },
+        {
+      "name": "Business Users"
+    },
+        {
+      "name": "Business Reviews"
+    },
+        {
+      "name": "Review Requests"
+    },
+        {
+      "name": "Business Feedback Requests"
+    },
+        {
       "name": "Businesses"
     }
   ],
