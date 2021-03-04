@@ -2082,6 +2082,76 @@
         ],
         "description": "A simple method to see if a user exists with the passed email address. It works for all SureCritic users, not just those controlled by the partner. It will return a 200 if a user with the passed email address does exist and a 404 if they do not."
       }
+    },
+    "/users/{external_id}/send_invite.{format}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "external_id",
+          "in": "path",
+          "required": true,
+          "description": "The external_id of the user"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "format",
+          "in": "path",
+          "required": true,
+          "description": "XML or JSON"
+        }
+      ],
+      "put": {
+        "summary": "Send Invite Method",
+        "tags": [
+          "Users"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success!"
+          }
+        },
+        "operationId": "get-users-external_id-send_invite.-format",
+        "description": "Sends a user an email with instructions for activating their SureCritic account. Only applies to pending users."
+      }
+    },
+    "/users/{external_id}/reset_password.{format}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "external_id",
+          "in": "path",
+          "required": true,
+          "description": "The external_id of the user"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "format",
+          "in": "path",
+          "required": true,
+          "description": "XML or JSON"
+        }
+      ],
+      "put": {
+        "summary": "Reset Password Method",
+        "operationId": "put-users-external_id-reset_password.-format",
+        "responses": {
+          "200": {
+            "description": "Success!"
+          }
+        },
+        "description": "Sends a user an email with instructions for resetting their SureCritic account. Only applies to active users.",
+        "tags": [
+          "Users"
+        ]
+      }
     }
   },
   "components": {
