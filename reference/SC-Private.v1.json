@@ -1229,14 +1229,6 @@
               "type": "string"
             },
             "in": "query",
-            "name": "country",
-            "description": "The two letter country code (ISO 3166 Alpha-2). defaults to US."
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "query",
             "name": "year",
             "description": "The Model Year of the vehicle/item serviced"
           },
@@ -1304,10 +1296,412 @@
             "in": "query",
             "name": "vin",
             "description": "The vehicle identification number or serial number for the product referenced"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "country",
+            "description": "The two letter country code (ISO 3166 Alpha-2). defaults to US."
           }
         ],
         "tags": [
           "Business Feedback Requests"
+        ]
+      }
+    },
+    "/reviews/requests.{format}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "format",
+          "in": "path",
+          "required": true,
+          "description": "XML or JSON"
+        }
+      ],
+      "get": {
+        "summary": "List Method",
+        "tags": [
+          "Review Requests"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success!"
+          }
+        },
+        "operationId": "get-reviews-requests.-format",
+        "description": "Returns a paged list of review requests created by the partner. The API returns up to 30 review requests per HTTP request. Results are sorted by request id.",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "page",
+            "description": "The page number for the request. The default page is 1."
+          }
+        ]
+      },
+      "post": {
+        "summary": "Create Method",
+        "operationId": "post-reviews-requests.-format",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Creates a single review request.",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "business_external_id",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "customer_external_id"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "first_name"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "​last_name"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "email_address"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "municipality",
+            "description": "city or township"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "region",
+            "description": "for US, use the 2-letter state abbreviation"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "postcode",
+            "description": "zip code"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "country",
+            "description": "The two letter country code (ISO 3166 Alpha-2). defaults to US."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "​service_date",
+            "description": "the date of service in the format YYYY-MM-DD."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "service_performed",
+            "description": "the short description of the service performed, such as “Collision Repair”"
+          },
+          {
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query",
+            "name": "year",
+            "description": "The Model Year of the vehicle/item serviced"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "make",
+            "description": "The Make of the vehicle/item serviced"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "model",
+            "description": "The Model of the vehicle/item serviced"
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "in": "query",
+            "name": "surecritic_sends_email",
+            "description": " a boolean flag (0 or 1, defaulting to 0) indicating whether SC is managing the email."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "service_order_id",
+            "description": "an identifier for the business/partner to indicate which visit we are requesting the review of."
+          },
+          {
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query",
+            "name": "​department_id ",
+            "description": "a numeric value to support business that have more than one department. Current values include sales = 1, service = 2, collision = 3."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "custom_fields[​field_identifier]​",
+            "description": "a value for any partner-specific custom fields, replacing ​'field_identifier' w​ith the appropriate value. Multiple custom fields can be specified."
+          }
+        ],
+        "tags": [
+          "Review Requests"
+        ]
+      }
+    },
+    "/reviews/requests/{request_id}.{format}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "request_id",
+          "in": "path",
+          "required": true,
+          "description": "Unique identifier for the request"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "format",
+          "in": "path",
+          "required": true,
+          "description": "XML or JSON"
+        }
+      ],
+      "get": {
+        "summary": "Show Method",
+        "tags": [
+          "Review Requests"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success!"
+          }
+        },
+        "operationId": "get-reviews-requests-request_id-.-format",
+        "description": "Returns current detailed information for a review request, including whether it has been completed."
+      }
+    },
+    "/reviews/requests/batch.{format}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "format",
+          "in": "path",
+          "required": true,
+          "description": "XML or JSON"
+        }
+      ],
+      "post": {
+        "summary": "Batch Create Method",
+        "operationId": "post-reviews-requests-batch.-format",
+        "responses": {
+          "200": {
+            "description": "Success!"
+          }
+        },
+        "description": "The same as standard create, but allows multiple review requests to be generated in a single call. This is accomplished by using array-style parameter naming. In the parameter names shown below you will see the prefix ​rr[​n​] ​on each parameter name. Replace ​n w​ ith the 0-based index of the parameter group.",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "rr[​n]​[business_external_id]",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "rr[​n]​[customer_external_id]"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "rr[​n]​[first_name]"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "rr[​n]​​[last_name]"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "rr[​n]​[email_address]"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "rr[​n]​[municipality]",
+            "description": "city or township"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "rr[​n]​[region]",
+            "description": "for US, use the 2-letter state abbreviation"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "rr[​n]​[postcode]",
+            "description": "zip code"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "rr[​n]​[country]",
+            "description": "The two letter country code (ISO 3166 Alpha-2). defaults to US."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "rr[​n]​​[service_date]",
+            "description": "the date of service in the format YYYY-MM-DD."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "rr[​n]​[service_performed]",
+            "description": "the short description of the service performed, such as “Collision Repair”"
+          },
+          {
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query",
+            "name": "rr[​n]​[year]",
+            "description": "The Model Year of the vehicle/item serviced"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "rr[​n]​[make]",
+            "description": "The Make of the vehicle/item serviced"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "rr[​n]​[model]",
+            "description": "The Model of the vehicle/item serviced"
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "in": "query",
+            "name": "rr[​n]​[surecritic_sends_email]",
+            "description": " a boolean flag (0 or 1, defaulting to 0) indicating whether SC is managing the email."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "rr[​n]​[service_order_id]",
+            "description": "an identifier for the business/partner to indicate which visit we are requesting the review of."
+          },
+          {
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query",
+            "name": "rr[​n]​​[department_id]",
+            "description": "a numeric value to support business that have more than one department. Current values include sales = 1, service = 2, collision = 3."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "rr[​n]​[custom_fields][​field_identifier]​",
+            "description": "a value for any partner-specific custom fields, replacing ​'field_identifier' w​ith the appropriate value. Multiple custom fields can be specified."
+          }
+        ],
+        "tags": [
+          "Review Requests"
         ]
       }
     }
