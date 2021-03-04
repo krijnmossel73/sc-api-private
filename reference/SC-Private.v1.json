@@ -32,6 +32,8 @@
     },
     {
       "name": "Users"
+    },    {
+      "name": "Contact Request"
     },
     {
       "name": "Review Request Batch Files"
@@ -2150,6 +2152,52 @@
         "description": "Sends a user an email with instructions for resetting their SureCritic account. Only applies to active users.",
         "tags": [
           "Users"
+        ]
+      }
+    },
+    "/contact/requests.{format}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "format",
+          "in": "path",
+          "required": true,
+          "description": "XML or JSON"
+        }
+      ],
+      "get": {
+        "summary": "Search Method",
+        "tags": [
+          "Contact Request"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success!"
+          }
+        },
+        "operationId": "get-contact-requests.-format",
+        "description": "Returns the highest priority request for the contact. It will return\n\nThis resource allows you to query the SureCritic database to see if a VIN/email address has any existing requests for feedback. These requests can range from a review request, a ReScore request, Low Score Diagnostic, or even a Vehicle Review. The resource will return the highest priority request. Separate permission must be granted to your API key by SureCritic to use this resource.",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "vin",
+            "required": true,
+            "description": "The vehicle identification number for the contact"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "email_address",
+            "description": "The email address of the contact",
+            "required": true
+          }
         ]
       }
     }
