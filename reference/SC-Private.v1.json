@@ -12,20 +12,23 @@
     {
       "name": "Business Hours"
     },
-        {
+    {
       "name": "Business Users"
     },
-        {
+    {
       "name": "Business Reviews"
     },
-        {
+    {
       "name": "Review Requests"
     },
-        {
+    {
       "name": "Business Feedback Requests"
     },
-        {
+    {
       "name": "Businesses"
+    },
+    {
+      "name": "Review Request Batch Files"
     }
   ],
   "servers": [
@@ -1718,6 +1721,117 @@
         "tags": [
           "Review Requests"
         ]
+      }
+    },
+    "/reviews/request_batch_files.{format}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "format",
+          "in": "path",
+          "required": true,
+          "description": "XML or JSON"
+        }
+      ],
+      "get": {
+        "summary": "List Method",
+        "tags": [
+          "Review Request Batch Files"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success!"
+          }
+        },
+        "operationId": "get-reviews-request_batch_files.-format",
+        "description": "Returns a paged list of review request batch files created by the partner. The API returns up to 30 review request batches per HTTP request. Results are sorted by batch id.",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "page",
+            "description": "The page number for the request. The default page is 1."
+          }
+        ]
+      },
+      "post": {
+        "summary": "Create Method",
+        "operationId": "post-reviews-request_batch_files.-format",
+        "responses": {
+          "200": {
+            "description": "Success!"
+          }
+        },
+        "description": "Creates a review request batch file for processing.",
+        "tags": [
+          "Review Request Batch Files"
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "​file_uri",
+            "description": "the location of the file to be downloaded",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "receipt_uri",
+            "description": "a location to upload a receipt file. The receipt file will include the request codes and URLs for each review request created"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "callback_uri",
+            "description": "an URL to be called as an HTTP GET request once processing is complete."
+          }
+        ]
+      }
+    },
+    "/reviews/request_batch_files/{batch_id}.{format}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "batch_id",
+          "in": "path",
+          "required": true,
+          "description": "Unique identifier for the batch file"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "format",
+          "in": "path",
+          "required": true,
+          "description": "XML or JSON"
+        }
+      ],
+      "get": {
+        "summary": "Show Method",
+        "tags": [
+          "Review Request Batch Files"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success!"
+          }
+        },
+        "operationId": "get-reviews-request_batch_files-batch_id-.-format",
+        "description": "Returns current detailed information for a review request batch file, including whether it has been processed and the number of requests created. Included will be a processing state that can be either “queued, processing, finished, or canceled”."
       }
     }
   },
