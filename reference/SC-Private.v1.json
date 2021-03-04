@@ -2028,6 +2028,19 @@
             "name": "last_name"
           }
         ]
+      },
+      "delete": {
+        "summary": "Destroy Method",
+        "operationId": "delete-users-external_id-.-format",
+        "responses": {
+          "200": {
+            "description": "Success!"
+          }
+        },
+        "description": "Completely removes a user.",
+        "tags": [
+          "Users"
+        ]
       }
     },
     "/users/exists.{format}": {
