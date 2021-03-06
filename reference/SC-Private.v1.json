@@ -32,8 +32,12 @@
     },
     {
       "name": "Users"
-    },    {
+    },
+    {
       "name": "Contact Request"
+    },
+    {
+      "name": "Third Party Reviews"
     },
     {
       "name": "Review Request Batch Files"
@@ -2197,6 +2201,112 @@
             "name": "email_address",
             "description": "The email address of the contact",
             "required": true
+          }
+        ]
+      }
+    },
+    "/businesses/{external_id}/third_party_reviews.{format}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "external_id",
+          "in": "path",
+          "required": true,
+          "description": "Unique identifier for your business"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "format",
+          "in": "path",
+          "required": true,
+          "description": "XML or JSON"
+        }
+      ],
+      "get": {
+        "summary": "List Method",
+        "tags": [
+          "Third Party Reviews"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success!"
+          }
+        },
+        "operationId": "get-businesses-external_id-third_party_reviews.-format",
+        "description": "​Returns a paged list of third party reviews per requested business. The API returns up to 30 third party reviews per request. Results are sorted by published date descending.\n\nThis resource allows you to query the SureCritic database for reviews from third parties (Google, Yelp, BING, etc). Separate permission must be granted to your API key by SureCritic to use this resource. Businesses are identified by your own unique identifier referred to as the external_id.",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "external_id",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "page",
+            "description": "The page number for the request. The default page is 1."
+          }
+        ]
+      }
+    },
+    "/businesses/{external_id}/third_party_reviews/summary.{format}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "external_id",
+          "in": "path",
+          "required": true,
+          "description": "Unique identifier for your business"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "format",
+          "in": "path",
+          "required": true,
+          "description": "XML or JSON"
+        }
+      ],
+      "get": {
+        "summary": "Summary Method",
+        "tags": [
+          "Third Party Reviews"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success!"
+          }
+        },
+        "operationId": "get-businesses-external_id-third_party_reviews-summary.-format",
+        "description": "Returns a paged list of summaries for third party reviews per requested business. The API returns a total summary and then a summary for each external source.",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "​external_id",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "page",
+            "description": "The page number for the request. The default page is 1."
           }
         ]
       }
