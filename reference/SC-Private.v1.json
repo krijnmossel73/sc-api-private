@@ -40,6 +40,15 @@
       "name": "Third Party Reviews"
     },
     {
+      "name": "Third Party Sources"
+    },
+    {
+      "name": "Surveys"
+    },
+    {
+      "name": "Survey Responses"
+    },
+    {
       "name": "Review Request Batch Files"
     }
   ],
@@ -2307,6 +2316,703 @@
             "in": "query",
             "name": "page",
             "description": "The page number for the request. The default page is 1."
+          }
+        ]
+      }
+    },
+    "/third_party_sources.{format}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "format",
+          "in": "path",
+          "required": true,
+          "description": "XML or JSON"
+        }
+      ],
+      "get": {
+        "summary": "List Method",
+        "tags": [
+          "Third Party Sources"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success!"
+          }
+        },
+        "operationId": "get-third_party_sources.-format",
+        "description": "Returns a list of third party sources in SureCritic.\n\nThis resource allows you to look up the appropriate Third Party Source codes available in SureCritic."
+      }
+    },
+    "/surveys.{format}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "format",
+          "in": "path",
+          "required": true,
+          "description": "XML or JSON"
+        }
+      ],
+      "get": {
+        "summary": "List Method",
+        "tags": [
+          "Surveys"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success!"
+          }
+        },
+        "operationId": "get-surveys.-format",
+        "description": "Returns a paged list of surveys controlled by the partner. Only live surveys are returned. The API returns up to 100 surveys per request. Results are sorted by created_date ascending.\n\n\nThis is the primary interface for listing your surveys within the SureCritic API. Surveys are identified by our internal id, which can be obtained via the List Method. Each Survey will contain the following fields:\n● ​survey_id ​- SureCritic’s identifier for this survey",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "description": "The page number for the request. The default page is 1.",
+            "name": "page"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "page_size",
+            "description": "The number of surveys returned in the query."
+          }
+        ]
+      }
+    },
+    "/surveys/{survey_id}.{format}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "survey_id",
+          "in": "path",
+          "required": true,
+          "description": "The unique identifier for the survey"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "format",
+          "in": "path",
+          "required": true,
+          "description": "XML or JSON"
+        }
+      ],
+      "get": {
+        "summary": "Show Method",
+        "tags": [
+          "Surveys"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success!"
+          }
+        },
+        "operationId": "get-surveys-id-.-format",
+        "description": "Returns current detailed information for a specific survey. It includes information including individual nodes, questions, and options. A node is the equivalent of a screen of questions."
+      }
+    },
+    "/surveys/{survey_id}/responses.{format}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "survey_id",
+          "in": "path",
+          "required": true,
+          "description": "The unique identifier for this survey"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "format",
+          "in": "path",
+          "required": true,
+          "description": "XML or JSON"
+        }
+      ],
+      "get": {
+        "summary": "List Method",
+        "tags": [
+          "Survey Responses"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success!"
+          }
+        },
+        "operationId": "get-surveys-survey_id-responses.-format",
+        "description": "Returns a paged list of survey responses created by the partner. The API returns up to 30 survey responses per HTTP request. Results are sorted by survey_response_id.\n\nSurvey Responses are used to create a custom link for a customer to complete their Survey online. Customer and service information is provided at the time a Survey Response is created. Each Survey Response created will contain the following fields:\n● ​survey_response_id ​- SureCritic’s identifier for this survey_response\n● ​request_url ​- the one-time use URL for completing this review",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "page",
+            "description": "The page number for the request. The default page is 1."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "business_external_id",
+            "description": "A business identifier to restrict survey responses. Not all surveys will tie responses to a business."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "complete",
+            "description": "if a value is present, the response will only include completed survey responses"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "not_complete",
+            "description": "if a value is present, the response will only include incomplete survey responses"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "show_answers",
+            "description": "if the value is = “true”, the response will include the answers for completed survey responses. This is best combined with the ​complete parameter"
+          }
+        ]
+      },
+      "post": {
+        "summary": "Create Method",
+        "operationId": "post-surveys-survey_id-responses.-format",
+        "responses": {
+          "200": {
+            "description": "Success!"
+          }
+        },
+        "tags": [
+          "Survey Responses"
+        ],
+        "description": "Creates a single survey response.",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "email_address"
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "in": "query",
+            "name": "surecritic_sends_email",
+            "description": "a boolean flag (0 or 1, defaulting to 1) indicating whether SC is managing the email."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "service_order_id",
+            "description": "an identifier for the business/partner to indicate which visit we are request the review of."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "business_external_id",
+            "description": "external id indicating a particular business."
+          },
+          {
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query",
+            "name": "department_id",
+            "description": "a numeric value to support business that have more than one department. Current values include sales = 1, service = 2, collision = 3."
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "in": "query",
+            "name": "internal_pay",
+            "description": "a boolean flag (0 or 1, defaulting to 0)"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "external_deparment_id",
+            "description": "for customer use, to indicate their department id."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "external_service_type",
+            "description": "for customer use, to indicate their service type."
+          },
+          {
+            "schema": {
+              "type": "number"
+            },
+            "in": "query",
+            "name": "service_order_amount",
+            "description": "dollar amount of transaction."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "serviced_on",
+            "description": " date of service, format YYYY-MM-DD"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "first_name"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "last_name"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "business_name"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "phone_number"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "mobile_number",
+            "description": "should accept text messages"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "municipality",
+            "description": "city or township"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "region",
+            "description": "for US, use the 2-letter state abbreviation"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "postcode",
+            "description": "zip code"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "country",
+            "description": "The two letter country code (ISO 3166 Alpha-2). defaults to US."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "external_id",
+            "description": "customer id for this transaction."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "extra_info"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "vin",
+            "description": "VIN of the vehicle."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "year",
+            "description": "The Model Year of the vehicle/item serviced, format YYYY"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "make",
+            "description": "The Make of the vehicle/item serviced"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "model",
+            "description": "The Model of the vehicle/item serviced"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "purchased_on",
+            "description": "purchase date, format YYYY-MM-DD"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "custom_fields[​field_identifier]​ ",
+            "description": "a value for any partner-specific custom fields, replacing ​field_identifier w​ ith the appropriate value. Multiple custom fields can be specified."
+          }
+        ]
+      }
+    },
+    "/surveys/{survey_id}/responses/{survey_response_id}.{format}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "survey_id",
+          "in": "path",
+          "required": true,
+          "description": "The unique identifier of the survey"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "survey_response_id",
+          "in": "path",
+          "required": true,
+          "description": "The unique identifier of the survey response"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "format",
+          "in": "path",
+          "required": true,
+          "description": "XML or JSON"
+        }
+      ],
+      "get": {
+        "summary": "Show Method",
+        "tags": [
+          "Survey Responses"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success!"
+          }
+        },
+        "operationId": "get-surveys-survey_id-responses-survey_response_id-.-format",
+        "description": "Returns current detailed information for a survey_response, including whether it has been completed."
+      }
+    },
+    "/surveys/{survey_id}/responses/batch.{format}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "survey_id",
+          "in": "path",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "format",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Batch Create Method",
+        "tags": [
+          "Survey Responses"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success!"
+          }
+        },
+        "operationId": "get-surveys-survey_id-responses-batch.-format",
+        "description": "The same as standard create, but allows multiple review requests to be generated in a single call. This is accomplished by using array-style parameter naming. In the parameter names shown below you will see the prefix ​rr[​n​] ​on each parameter name. Replace ​n w​ ith the 0-based index of the parameter group.",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "sr[​n​][email_address]",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "in": "query",
+            "name": "sr[​n​][surecritic_sends_email]",
+            "description": "a boolean flag (0 or 1, defaulting to 1) indicating whether SC is managing the email."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "sr[​n​][service_order_id]",
+            "description": "an identifier for the business/partner to indicate which visit we are request the review of."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "sr[​n​][business_external_id]",
+            "description": "external id indicating a particular business."
+          },
+          {
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query",
+            "name": "sr[​n​][department_id]",
+            "description": "a numeric value to support business that have more than one department. Current values include sales = 1, service = 2, collision = 3."
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "in": "query",
+            "name": "sr[​n​][internal_pay]",
+            "description": "a boolean flag (0 or 1, defaulting to 0)"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "sr[​n​][external_deparment_id]",
+            "description": "for customer use, to indicate their department id."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "sr[​n​][external_service_type]",
+            "description": "for customer use, to indicate their service type."
+          },
+          {
+            "schema": {
+              "type": "number"
+            },
+            "in": "query",
+            "name": "sr[​n​][service_order_amount]",
+            "description": "dollar amount of transaction."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "sr[​n​][serviced_on]",
+            "description": " date of service, format YYYY-MM-DD"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "sr[​n​][first_name]"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "sr[​n​][last_name]"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "sr[​n​][business_name]"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "sr[​n​][phone_number]"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "sr[​n​][mobile_number]",
+            "description": "should accept text messages"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "sr[​n​][municipality]",
+            "description": "city or township"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "sr[​n​][region]",
+            "description": "for US, use the 2-letter state abbreviation"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "sr[​n​][postcode]",
+            "description": "zip code"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "sr[​n​][country]",
+            "description": "The two letter country code (ISO 3166 Alpha-2). defaults to US."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "sr[​n​][external_id]",
+            "description": "customer id for this transaction."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "sr[​n​][extra_info]"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "sr[​n​][vin]",
+            "description": "VIN of the vehicle."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "sr[​n​][year]",
+            "description": "The Model Year of the vehicle/item serviced, format YYYY"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "sr[​n​][make]",
+            "description": "The Make of the vehicle/item serviced"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "sr[​n​][model]",
+            "description": "The Model of the vehicle/item serviced"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "sr[​n​][purchased_on]",
+            "description": "purchase date, format YYYY-MM-DD"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "sr[​n​][custom_fields][​field_identifier]​ ",
+            "description": "a value for any partner-specific custom fields, replacing ​field_identifier w​ ith the appropriate value. Multiple custom fields can be specified."
           }
         ]
       }
