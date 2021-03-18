@@ -452,7 +452,245 @@
         ],
         "responses": {
           "200": {
-            "description": "Success!"
+            "description": "Success!",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "business": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "number"
+                        },
+                        "external_id": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "name": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "state": {
+                          "type": "number"
+                        },
+                        "review_count": {
+                          "type": "number"
+                        },
+                        "rating_count": {
+                          "type": "number"
+                        },
+                        "rating_avg": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "recommend_pct": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "brp_url": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "departments_enabled": {
+                          "type": "boolean"
+                        },
+                        "review_reach_enabled": {
+                          "type": "boolean"
+                        },
+                        "show_hours": {
+                          "type": "boolean"
+                        },
+                        "address": {
+                          "type": "object",
+                          "properties": {
+                            "line_1": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "line_2": {
+                              "type": "string"
+                            },
+                            "line_3": {
+                              "type": "string"
+                            },
+                            "municipality": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "postcode": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "region": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "country": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "latitude": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "longitude": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          },
+                          "required": [
+                            "line_1",
+                            "line_2",
+                            "line_3",
+                            "municipality",
+                            "postcode",
+                            "region",
+                            "country",
+                            "latitude",
+                            "longitude"
+                          ]
+                        },
+                        "phone": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "sms_number": {},
+                        "website": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "facebook_url": {
+                          "type": "string"
+                        },
+                        "google_plus_url": {
+                          "type": "string"
+                        },
+                        "google_places_url": {
+                          "type": "string"
+                        },
+                        "google_my_business_url": {},
+                        "twitter_account": {
+                          "type": "string"
+                        },
+                        "email_address": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "business_appointment_url": {},
+                        "google_place_id": {},
+                        "yelp_url": {},
+                        "about": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "category_1": {
+                          "type": "number"
+                        },
+                        "category_2": {
+                          "type": "number"
+                        },
+                        "category_3": {
+                          "type": "number"
+                        },
+                        "industry_id": {
+                          "type": "number"
+                        },
+                        "department_ids": {
+                          "type": "array",
+                          "items": {
+                            "required": [],
+                            "properties": {}
+                          }
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "external_id",
+                        "name",
+                        "state",
+                        "review_count",
+                        "rating_count",
+                        "rating_avg",
+                        "recommend_pct",
+                        "brp_url",
+                        "departments_enabled",
+                        "review_reach_enabled",
+                        "show_hours",
+                        "address",
+                        "phone",
+                        "website",
+                        "facebook_url",
+                        "google_plus_url",
+                        "google_places_url",
+                        "twitter_account",
+                        "email_address",
+                        "about",
+                        "category_1",
+                        "category_2",
+                        "category_3",
+                        "industry_id",
+                        "department_ids"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "business"
+                  ]
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "business": {
+                        "id": 2785,
+                        "external_id": "1016861",
+                        "name": "Gates Auto Body Alphorn",
+                        "state": -2,
+                        "review_count": 85,
+                        "rating_count": 89,
+                        "rating_avg": "4.719101",
+                        "recommend_pct": "98.8764",
+                        "brp_url": "https://scstaging.surecritic.com/reviews/gates-auto-body-alphorn",
+                        "departments_enabled": false,
+                        "review_reach_enabled": false,
+                        "show_hours": true,
+                        "address": {
+                          "line_1": "N2969 18th Ave.",
+                          "line_2": "",
+                          "line_3": "",
+                          "municipality": "Monroe",
+                          "postcode": "53566",
+                          "region": "WI",
+                          "country": "United States",
+                          "latitude": "42.6021469",
+                          "longitude": "-89.6374018"
+                        },
+                        "phone": "608-325-4000",
+                        "sms_number": null,
+                        "website": "www.gatesautobody.com/locations-alphorn-monroe.htm",
+                        "facebook_url": "",
+                        "google_plus_url": "",
+                        "google_places_url": "",
+                        "google_my_business_url": null,
+                        "twitter_account": "",
+                        "email_address": "scampbell@gatescollision.com",
+                        "business_appointment_url": null,
+                        "google_place_id": null,
+                        "yelp_url": null,
+                        "about": "Gates Auto Body Alphorn offers excellence in collision repairs.  We ensure quality workmanship and customers enjoy our convenient, comfortable and state-of-the-art collision center.",
+                        "category_1": 2,
+                        "category_2": 3,
+                        "category_3": 1,
+                        "industry_id": 1,
+                        "department_ids": []
+                      }
+                    }
+                  }
+                }
+              }
+            }
           },
           "403": {
             "$ref": "#/components/responses/403"
@@ -603,7 +841,121 @@
         "summary": "Show method",
         "responses": {
           "200": {
-            "description": "Success!"
+            "description": "Success!",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "business_external_id": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "business_hours": {
+                      "type": "array",
+                      "uniqueItems": true,
+                      "minItems": 1,
+                      "items": {
+                        "required": [
+                          "day",
+                          "closed",
+                          "start_time_1",
+                          "end_time_1"
+                        ],
+                        "properties": {
+                          "day": {
+                            "type": "number"
+                          },
+                          "closed": {
+                            "type": "boolean"
+                          },
+                          "start_time_1": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "end_time_1": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "start_time_2": {},
+                          "end_time_2": {}
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "business_external_id",
+                    "business_hours"
+                  ]
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "business_external_id": "1016861",
+                      "business_hours": [
+                        {
+                          "day": 0,
+                          "closed": false,
+                          "start_time_1": "2000-01-01T07:30:00.000Z",
+                          "end_time_1": "2000-01-01T17:00:00.000Z",
+                          "start_time_2": null,
+                          "end_time_2": null
+                        },
+                        {
+                          "day": 1,
+                          "closed": false,
+                          "start_time_1": "2000-01-01T07:30:00.000Z",
+                          "end_time_1": "2000-01-01T17:00:00.000Z",
+                          "start_time_2": null,
+                          "end_time_2": null
+                        },
+                        {
+                          "day": 2,
+                          "closed": false,
+                          "start_time_1": "2000-01-01T07:30:00.000Z",
+                          "end_time_1": "2000-01-01T17:00:00.000Z",
+                          "start_time_2": null,
+                          "end_time_2": null
+                        },
+                        {
+                          "day": 3,
+                          "closed": false,
+                          "start_time_1": "2000-01-01T07:30:00.000Z",
+                          "end_time_1": "2000-01-01T17:00:00.000Z",
+                          "start_time_2": null,
+                          "end_time_2": null
+                        },
+                        {
+                          "day": 4,
+                          "closed": false,
+                          "start_time_1": "2000-01-01T07:30:00.000Z",
+                          "end_time_1": "2000-01-01T17:00:00.000Z",
+                          "start_time_2": null,
+                          "end_time_2": null
+                        },
+                        {
+                          "day": 5,
+                          "closed": true,
+                          "start_time_1": null,
+                          "end_time_1": null,
+                          "start_time_2": null,
+                          "end_time_2": null
+                        },
+                        {
+                          "day": 6,
+                          "closed": true,
+                          "start_time_1": null,
+                          "end_time_1": null,
+                          "start_time_2": null,
+                          "end_time_2": null
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
           }
         },
         "operationId": "get-businesses-external_id-hours.-format",
@@ -627,10 +979,10 @@
         "parameters": [
           {
             "schema": {
-              "type": "string"
+              "type": "integer"
             },
             "in": "query",
-            "name": "hours[​day_of_week]​[closed] ",
+            "name": "hours[​day_of_week]​[closed]",
             "description": "a boolean value indicating the business is open or closed on this day - 0 and 1 would be open and closed respectively."
           },
           {
@@ -699,7 +1051,89 @@
         ],
         "responses": {
           "200": {
-            "description": "Success!"
+            "description": "Success!",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "business_external_id": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "business_users": {
+                      "type": "array",
+                      "uniqueItems": true,
+                      "minItems": 1,
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "first_name": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "last_name": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "email_address": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "external_id": {
+                            "type": "string"
+                          },
+                          "state": {
+                            "type": "integer"
+                          }
+                        },
+                        "required": [
+                          "first_name",
+                          "last_name",
+                          "email_address",
+                          "state"
+                        ]
+                      }
+                    }
+                  },
+                  "required": [
+                    "business_external_id",
+                    "business_users"
+                  ]
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "business_external_id": "1016861",
+                      "business_users": [
+                        {
+                          "first_name": "Shayne",
+                          "last_name": "Campbell",
+                          "email_address": "scampbell@gatescollision.com",
+                          "external_id": null,
+                          "state": -1
+                        },
+                        {
+                          "first_name": "Courtney ",
+                          "last_name": "Collins",
+                          "email_address": "ccollins@gatescollision.com",
+                          "external_id": null,
+                          "state": -1
+                        },
+                        {
+                          "first_name": "Todd ",
+                          "last_name": "Stangl",
+                          "email_address": "tstangl@gatescollision.com",
+                          "external_id": null,
+                          "state": 0
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
           }
         },
         "operationId": "get-businesses-external_id-users.-format",
@@ -805,7 +1239,447 @@
         ],
         "responses": {
           "200": {
-            "description": "Success!"
+            "description": "Success!",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "current_page": {
+                      "type": "number"
+                    },
+                    "per_page": {
+                      "type": "number"
+                    },
+                    "total_entries": {
+                      "type": "number"
+                    },
+                    "total_pages": {
+                      "type": "number"
+                    },
+                    "business_external_id": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "business_reviews": {
+                      "type": "array",
+                      "uniqueItems": true,
+                      "minItems": 1,
+                      "items": {
+                        "required": [
+                          "id",
+                          "visible",
+                          "is_review",
+                          "is_private",
+                          "is_spam",
+                          "has_rescore",
+                          "rating",
+                          "recommends",
+                          "service_date",
+                          "created_date",
+                          "review_url",
+                          "audit_url",
+                          "third_person",
+                          "response_count",
+                          "first_name",
+                          "last_name",
+                          "email_address",
+                          "title",
+                          "comments",
+                          "municipality",
+                          "region",
+                          "postcode",
+                          "first_time",
+                          "internal_pay"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "number"
+                          },
+                          "external_id": {},
+                          "visible": {
+                            "type": "boolean"
+                          },
+                          "is_review": {
+                            "type": "boolean"
+                          },
+                          "is_private": {
+                            "type": "boolean"
+                          },
+                          "is_spam": {
+                            "type": "boolean"
+                          },
+                          "has_rescore": {
+                            "type": "boolean"
+                          },
+                          "rating": {
+                            "type": "number"
+                          },
+                          "recommends": {
+                            "type": "boolean"
+                          },
+                          "service_date": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "created_date": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "review_url": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "audit_url": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "request_id": {},
+                          "customer_external_id": {},
+                          "third_person": {
+                            "type": "boolean"
+                          },
+                          "source": {},
+                          "department_id": {},
+                          "service_order_id": {},
+                          "social_engagements": {
+                            "type": "array",
+                            "items": {
+                              "required": [],
+                              "properties": {}
+                            }
+                          },
+                          "response_count": {
+                            "type": "number"
+                          },
+                          "first_name": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "last_name": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "email_address": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "service_performed": {},
+                          "year": {},
+                          "make": {},
+                          "model": {},
+                          "title": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "comments": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "municipality": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "region": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "postcode": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "country": {},
+                          "vin": {},
+                          "sale_date": {},
+                          "first_time": {
+                            "type": "boolean"
+                          },
+                          "internal_pay": {
+                            "type": "boolean"
+                          },
+                          "partner_department_id": {},
+                          "service_type": {},
+                          "custom_fields": {
+                            "type": "array",
+                            "items": {
+                              "required": [],
+                              "properties": {}
+                            }
+                          },
+                          "responses": {
+                            "type": "array",
+                            "items": {
+                              "required": [],
+                              "properties": {}
+                            }
+                          },
+                          "rescored_review": {},
+                          "employees": {
+                            "type": "array",
+                            "items": {
+                              "required": [],
+                              "properties": {}
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "current_page",
+                    "per_page",
+                    "total_entries",
+                    "total_pages",
+                    "business_external_id",
+                    "business_reviews"
+                  ]
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "current_page": 1,
+                      "per_page": 5,
+                      "total_entries": 89,
+                      "total_pages": 18,
+                      "business_external_id": "1016861",
+                      "business_reviews": [
+                        {
+                          "id": 2572976,
+                          "external_id": null,
+                          "visible": true,
+                          "is_review": true,
+                          "is_private": false,
+                          "is_spam": false,
+                          "has_rescore": false,
+                          "rating": 5,
+                          "recommends": true,
+                          "service_date": "2016-11-14",
+                          "created_date": "2016-11-20",
+                          "review_url": "https://scstaging.surecritic.com/reviews/gates-auto-body-alphorn?review_id=2572976",
+                          "audit_url": "https://scstaging.surecritic.com/reviews/gates-auto-body-alphorn/dashboard?audit_id=2572976",
+                          "request_id": null,
+                          "customer_external_id": null,
+                          "third_person": false,
+                          "source": null,
+                          "department_id": null,
+                          "service_order_id": null,
+                          "social_engagements": [],
+                          "response_count": 0,
+                          "first_name": "Vaipu",
+                          "last_name": "Wfezkyuqu",
+                          "email_address": "wfezkyuqu66@rfabhyuf.paz",
+                          "service_performed": null,
+                          "year": null,
+                          "make": null,
+                          "model": null,
+                          "title": "Excellent customer service",
+                          "comments": "My son had his car recently repaired from hitting a deer and the repairs were done in only two days. The car looks great and they gave us a free loaner. Found out my son left the garage door opener in the car and contacted them thru website chat forum. Then received a call that Sunday that they located it and we could come in to pick it up great customer service. So glad our insurance company recommended them",
+                          "municipality": "Brodhead",
+                          "region": "WI",
+                          "postcode": "53520",
+                          "country": null,
+                          "vin": null,
+                          "sale_date": null,
+                          "first_time": false,
+                          "internal_pay": false,
+                          "partner_department_id": null,
+                          "service_type": null,
+                          "custom_fields": [],
+                          "responses": [],
+                          "rescored_review": null,
+                          "employees": []
+                        },
+                        {
+                          "id": 385008,
+                          "external_id": "26868977",
+                          "visible": true,
+                          "is_review": true,
+                          "is_private": false,
+                          "is_spam": false,
+                          "has_rescore": false,
+                          "rating": 5,
+                          "recommends": true,
+                          "service_date": "2013-07-22",
+                          "created_date": "2013-08-05",
+                          "review_url": "https://scstaging.surecritic.com/reviews/gates-auto-body-alphorn?review_id=385008",
+                          "audit_url": "https://scstaging.surecritic.com/reviews/gates-auto-body-alphorn/dashboard?audit_id=385008",
+                          "request_id": null,
+                          "customer_external_id": null,
+                          "third_person": true,
+                          "source": "API",
+                          "department_id": 3,
+                          "service_order_id": "",
+                          "social_engagements": [],
+                          "response_count": 0,
+                          "first_name": "Xugxyu",
+                          "last_name": "Sfotoz",
+                          "email_address": "",
+                          "service_performed": "Collision",
+                          "year": "",
+                          "make": "",
+                          "model": "",
+                          "title": null,
+                          "comments": "Leslie said Jerry at this business did a great job explaining everything step by step regarding the vehicle repairs. Everything was done exactly as stated every step of the way. He couldn't have asked for better service.",
+                          "municipality": "Monroe",
+                          "region": "WI",
+                          "postcode": "53566-",
+                          "country": null,
+                          "vin": null,
+                          "sale_date": null,
+                          "first_time": false,
+                          "internal_pay": false,
+                          "partner_department_id": null,
+                          "service_type": null,
+                          "custom_fields": [],
+                          "responses": [],
+                          "rescored_review": null,
+                          "employees": []
+                        },
+                        {
+                          "id": 385007,
+                          "external_id": "26868963",
+                          "visible": true,
+                          "is_review": true,
+                          "is_private": false,
+                          "is_spam": false,
+                          "has_rescore": false,
+                          "rating": 5,
+                          "recommends": true,
+                          "service_date": "2013-07-21",
+                          "created_date": "2013-08-05",
+                          "review_url": "https://scstaging.surecritic.com/reviews/gates-auto-body-alphorn?review_id=385007",
+                          "audit_url": "https://scstaging.surecritic.com/reviews/gates-auto-body-alphorn/dashboard?audit_id=385007",
+                          "request_id": null,
+                          "customer_external_id": null,
+                          "third_person": true,
+                          "source": "API",
+                          "department_id": 3,
+                          "service_order_id": "",
+                          "social_engagements": [],
+                          "response_count": 0,
+                          "first_name": "Fobqi",
+                          "last_name": "Gurrfaaq",
+                          "email_address": "",
+                          "service_performed": "Collision",
+                          "year": "",
+                          "make": "",
+                          "model": "",
+                          "title": null,
+                          "comments": "Randy said they answered all of his questions and explained everything to him well. He knew exactly how long his repair would take.",
+                          "municipality": "Monroe",
+                          "region": "WI",
+                          "postcode": "53566-",
+                          "country": null,
+                          "vin": null,
+                          "sale_date": null,
+                          "first_time": false,
+                          "internal_pay": false,
+                          "partner_department_id": null,
+                          "service_type": null,
+                          "custom_fields": [],
+                          "responses": [],
+                          "rescored_review": null,
+                          "employees": []
+                        },
+                        {
+                          "id": 369927,
+                          "external_id": "26680315",
+                          "visible": true,
+                          "is_review": true,
+                          "is_private": false,
+                          "is_spam": false,
+                          "has_rescore": false,
+                          "rating": 5,
+                          "recommends": true,
+                          "service_date": "2013-07-04",
+                          "created_date": "2013-07-18",
+                          "review_url": "https://scstaging.surecritic.com/reviews/gates-auto-body-alphorn?review_id=369927",
+                          "audit_url": "https://scstaging.surecritic.com/reviews/gates-auto-body-alphorn/dashboard?audit_id=369927",
+                          "request_id": null,
+                          "customer_external_id": null,
+                          "third_person": true,
+                          "source": "API",
+                          "department_id": 3,
+                          "service_order_id": "",
+                          "social_engagements": [],
+                          "response_count": 0,
+                          "first_name": "Vuffi",
+                          "last_name": "Gptkoysuf",
+                          "email_address": "",
+                          "service_performed": "Collision",
+                          "year": "",
+                          "make": "",
+                          "model": "",
+                          "title": null,
+                          "comments": "Robin said this business did a good job in a timely manner and she has no complaints.",
+                          "municipality": "Monroe",
+                          "region": "WI",
+                          "postcode": "53566",
+                          "country": null,
+                          "vin": null,
+                          "sale_date": null,
+                          "first_time": false,
+                          "internal_pay": false,
+                          "partner_department_id": null,
+                          "service_type": null,
+                          "custom_fields": [],
+                          "responses": [],
+                          "rescored_review": null,
+                          "employees": []
+                        },
+                        {
+                          "id": 367558,
+                          "external_id": "26383537",
+                          "visible": true,
+                          "is_review": true,
+                          "is_private": false,
+                          "is_spam": false,
+                          "has_rescore": false,
+                          "rating": 5,
+                          "recommends": true,
+                          "service_date": null,
+                          "created_date": "2013-07-17",
+                          "review_url": "https://scstaging.surecritic.com/reviews/gates-auto-body-alphorn?review_id=367558",
+                          "audit_url": "https://scstaging.surecritic.com/reviews/gates-auto-body-alphorn/dashboard?audit_id=367558",
+                          "request_id": null,
+                          "customer_external_id": null,
+                          "third_person": true,
+                          "source": "API",
+                          "department_id": 3,
+                          "service_order_id": "",
+                          "social_engagements": [],
+                          "response_count": 0,
+                          "first_name": "Haz",
+                          "last_name": "Nubbuhh",
+                          "email_address": "",
+                          "service_performed": "Collision",
+                          "year": "",
+                          "make": "",
+                          "model": "",
+                          "title": null,
+                          "comments": "Tom said the business did an excellent job and they were great.",
+                          "municipality": "Monroe",
+                          "region": "WI",
+                          "postcode": "53566-",
+                          "country": null,
+                          "vin": null,
+                          "sale_date": null,
+                          "first_time": false,
+                          "internal_pay": false,
+                          "partner_department_id": null,
+                          "service_type": null,
+                          "custom_fields": [],
+                          "responses": [],
+                          "rescored_review": null,
+                          "employees": []
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
           }
         },
         "operationId": "get-businesses-external_id-reviews.-format",
@@ -1100,7 +1974,257 @@
         ],
         "responses": {
           "200": {
-            "description": "Success!"
+            "description": "Success!",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "review": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "number"
+                        },
+                        "external_id": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "visible": {
+                          "type": "boolean"
+                        },
+                        "is_review": {
+                          "type": "boolean"
+                        },
+                        "is_private": {
+                          "type": "boolean"
+                        },
+                        "is_spam": {
+                          "type": "boolean"
+                        },
+                        "has_rescore": {
+                          "type": "boolean"
+                        },
+                        "rating": {
+                          "type": "number"
+                        },
+                        "recommends": {
+                          "type": "boolean"
+                        },
+                        "service_date": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "created_date": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "review_url": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "audit_url": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "request_id": {},
+                        "customer_external_id": {},
+                        "third_person": {
+                          "type": "boolean"
+                        },
+                        "source": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "department_id": {
+                          "type": "number"
+                        },
+                        "service_order_id": {
+                          "type": "string"
+                        },
+                        "social_engagements": {
+                          "type": "array",
+                          "items": {
+                            "required": [],
+                            "properties": {}
+                          }
+                        },
+                        "response_count": {
+                          "type": "number"
+                        },
+                        "first_name": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "last_name": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "email_address": {
+                          "type": "string"
+                        },
+                        "service_performed": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "year": {
+                          "type": "string"
+                        },
+                        "make": {
+                          "type": "string"
+                        },
+                        "model": {
+                          "type": "string"
+                        },
+                        "title": {},
+                        "comments": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "municipality": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "region": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "postcode": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "country": {},
+                        "vin": {},
+                        "sale_date": {},
+                        "first_time": {
+                          "type": "boolean"
+                        },
+                        "internal_pay": {
+                          "type": "boolean"
+                        },
+                        "partner_department_id": {},
+                        "service_type": {},
+                        "custom_fields": {
+                          "type": "array",
+                          "items": {
+                            "required": [],
+                            "properties": {}
+                          }
+                        },
+                        "responses": {
+                          "type": "array",
+                          "items": {
+                            "required": [],
+                            "properties": {}
+                          }
+                        },
+                        "rescored_review": {},
+                        "employees": {
+                          "type": "array",
+                          "items": {
+                            "required": [],
+                            "properties": {}
+                          }
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "external_id",
+                        "visible",
+                        "is_review",
+                        "is_private",
+                        "is_spam",
+                        "has_rescore",
+                        "rating",
+                        "recommends",
+                        "service_date",
+                        "created_date",
+                        "review_url",
+                        "audit_url",
+                        "third_person",
+                        "source",
+                        "department_id",
+                        "service_order_id",
+                        "social_engagements",
+                        "response_count",
+                        "first_name",
+                        "last_name",
+                        "email_address",
+                        "service_performed",
+                        "year",
+                        "make",
+                        "model",
+                        "comments",
+                        "municipality",
+                        "region",
+                        "postcode",
+                        "first_time",
+                        "internal_pay",
+                        "custom_fields",
+                        "responses",
+                        "employees"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "review"
+                  ]
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "review": {
+                        "id": 385008,
+                        "external_id": "26868977",
+                        "visible": true,
+                        "is_review": true,
+                        "is_private": false,
+                        "is_spam": false,
+                        "has_rescore": false,
+                        "rating": 5,
+                        "recommends": true,
+                        "service_date": "2013-07-22",
+                        "created_date": "2013-08-05",
+                        "review_url": "https://scstaging.surecritic.com/reviews/gates-auto-body-alphorn?review_id=385008",
+                        "audit_url": "https://scstaging.surecritic.com/reviews/gates-auto-body-alphorn/dashboard?audit_id=385008",
+                        "request_id": null,
+                        "customer_external_id": null,
+                        "third_person": true,
+                        "source": "API",
+                        "department_id": 3,
+                        "service_order_id": "",
+                        "social_engagements": [],
+                        "response_count": 0,
+                        "first_name": "Xugxyu",
+                        "last_name": "Sfotoz",
+                        "email_address": "",
+                        "service_performed": "Collision",
+                        "year": "",
+                        "make": "",
+                        "model": "",
+                        "title": null,
+                        "comments": "Leslie said Jerry at this business did a great job explaining everything step by step regarding the vehicle repairs. Everything was done exactly as stated every step of the way. He couldn't have asked for better service.",
+                        "municipality": "Monroe",
+                        "region": "WI",
+                        "postcode": "53566-",
+                        "country": null,
+                        "vin": null,
+                        "sale_date": null,
+                        "first_time": false,
+                        "internal_pay": false,
+                        "partner_department_id": null,
+                        "service_type": null,
+                        "custom_fields": [],
+                        "responses": [],
+                        "rescored_review": null,
+                        "employees": []
+                      }
+                    }
+                  }
+                }
+              }
+            }
           }
         },
         "operationId": "get-businesses-external_business_id-reviews-external_review_id-.-format",
@@ -1874,7 +2998,348 @@
         ],
         "responses": {
           "200": {
-            "description": "Success!"
+            "description": "Success!",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "current_page": {
+                      "type": "number"
+                    },
+                    "per_page": {
+                      "type": "number"
+                    },
+                    "total_entries": {
+                      "type": "number"
+                    },
+                    "total_pages": {
+                      "type": "number"
+                    },
+                    "categories": {
+                      "type": "array",
+                      "uniqueItems": true,
+                      "minItems": 1,
+                      "items": {
+                        "required": [
+                          "category_id",
+                          "name"
+                        ],
+                        "properties": {
+                          "category_id": {
+                            "type": "number"
+                          },
+                          "name": {
+                            "type": "string",
+                            "minLength": 1
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "current_page",
+                    "per_page",
+                    "total_entries",
+                    "total_pages",
+                    "categories"
+                  ]
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "current_page": 1,
+                      "per_page": 500,
+                      "total_entries": 70,
+                      "total_pages": 1,
+                      "categories": [
+                        {
+                          "category_id": 33,
+                          "name": "Acura Dealer"
+                        },
+                        {
+                          "category_id": 47,
+                          "name": "Allied Residential"
+                        },
+                        {
+                          "category_id": 46,
+                          "name": "Apartments"
+                        },
+                        {
+                          "category_id": 48,
+                          "name": "Arnel"
+                        },
+                        {
+                          "category_id": 70,
+                          "name": "Audi Dealer"
+                        },
+                        {
+                          "category_id": 1,
+                          "name": "Auto Body"
+                        },
+                        {
+                          "category_id": 14,
+                          "name": "Auto Maintenance"
+                        },
+                        {
+                          "category_id": 25,
+                          "name": "Auto Recycler"
+                        },
+                        {
+                          "category_id": 7,
+                          "name": "Auto Repair"
+                        },
+                        {
+                          "category_id": 65,
+                          "name": "BMW Dealer"
+                        },
+                        {
+                          "category_id": 2,
+                          "name": "Body Shop"
+                        },
+                        {
+                          "category_id": 21,
+                          "name": "Car Dealer"
+                        },
+                        {
+                          "category_id": 15,
+                          "name": "Car Maintenance"
+                        },
+                        {
+                          "category_id": 3,
+                          "name": "Collision Repair"
+                        },
+                        {
+                          "category_id": 9,
+                          "name": "Commercial Towing"
+                        },
+                        {
+                          "category_id": 37,
+                          "name": "Diesel Services"
+                        },
+                        {
+                          "category_id": 66,
+                          "name": "Dodge Dealer"
+                        },
+                        {
+                          "category_id": 27,
+                          "name": "Domestic Auto Repair"
+                        },
+                        {
+                          "category_id": 45,
+                          "name": "Education"
+                        },
+                        {
+                          "category_id": 63,
+                          "name": "Electric Vehicle Service"
+                        },
+                        {
+                          "category_id": 29,
+                          "name": "European Auto Repair"
+                        },
+                        {
+                          "category_id": 55,
+                          "name": "Financial Services"
+                        },
+                        {
+                          "category_id": 40,
+                          "name": "Firestone Repair Shop"
+                        },
+                        {
+                          "category_id": 52,
+                          "name": "Fitness"
+                        },
+                        {
+                          "category_id": 39,
+                          "name": "Fix Auto"
+                        },
+                        {
+                          "category_id": 51,
+                          "name": "Food Delivery"
+                        },
+                        {
+                          "category_id": 67,
+                          "name": "Ford Dealer "
+                        },
+                        {
+                          "category_id": 49,
+                          "name": "Furniture"
+                        },
+                        {
+                          "category_id": 71,
+                          "name": "Genesis Dealer"
+                        },
+                        {
+                          "category_id": 4,
+                          "name": "Glass Repair"
+                        },
+                        {
+                          "category_id": 59,
+                          "name": "Hair Salon"
+                        },
+                        {
+                          "category_id": 8,
+                          "name": "Heavy Truck Repair"
+                        },
+                        {
+                          "category_id": 53,
+                          "name": "Home Services"
+                        },
+                        {
+                          "category_id": 68,
+                          "name": "Honda Dealer"
+                        },
+                        {
+                          "category_id": 62,
+                          "name": "Hybrid Service"
+                        },
+                        {
+                          "category_id": 35,
+                          "name": "Hyundai Dealer"
+                        },
+                        {
+                          "category_id": 28,
+                          "name": "Import Auto Repair"
+                        },
+                        {
+                          "category_id": 61,
+                          "name": "Insurance"
+                        },
+                        {
+                          "category_id": 64,
+                          "name": "Kia Dealer"
+                        },
+                        {
+                          "category_id": 60,
+                          "name": "Lawn and Garden"
+                        },
+                        {
+                          "category_id": 57,
+                          "name": "Limo Service"
+                        },
+                        {
+                          "category_id": 44,
+                          "name": "Movers"
+                        },
+                        {
+                          "category_id": 20,
+                          "name": "New Car Dealer"
+                        },
+                        {
+                          "category_id": 41,
+                          "name": "Oil Change"
+                        },
+                        {
+                          "category_id": 54,
+                          "name": "Property Management"
+                        },
+                        {
+                          "category_id": 42,
+                          "name": "Real Estate Agent"
+                        },
+                        {
+                          "category_id": 43,
+                          "name": "Real Estate Broker"
+                        },
+                        {
+                          "category_id": 19,
+                          "name": "Repair Shop"
+                        },
+                        {
+                          "category_id": 32,
+                          "name": "Retirement Community"
+                        },
+                        {
+                          "category_id": 13,
+                          "name": "RV Collision Repair"
+                        },
+                        {
+                          "category_id": 12,
+                          "name": "RV Repair"
+                        },
+                        {
+                          "category_id": 10,
+                          "name": "RV Sales"
+                        },
+                        {
+                          "category_id": 11,
+                          "name": "RV Service"
+                        },
+                        {
+                          "category_id": 31,
+                          "name": "Senior Living"
+                        },
+                        {
+                          "category_id": 56,
+                          "name": "Shuttle Service"
+                        },
+                        {
+                          "category_id": 26,
+                          "name": "Smog"
+                        },
+                        {
+                          "category_id": 58,
+                          "name": "Spa Services"
+                        },
+                        {
+                          "category_id": 69,
+                          "name": "Subaru Dealer"
+                        },
+                        {
+                          "category_id": 22,
+                          "name": "Tire Repair"
+                        },
+                        {
+                          "category_id": 23,
+                          "name": "Tire Sales"
+                        },
+                        {
+                          "category_id": 50,
+                          "name": "Tires"
+                        },
+                        {
+                          "category_id": 72,
+                          "name": "Title Company"
+                        },
+                        {
+                          "category_id": 6,
+                          "name": "Towing Service"
+                        },
+                        {
+                          "category_id": 38,
+                          "name": "Toyota Dealer"
+                        },
+                        {
+                          "category_id": 36,
+                          "name": "Transmission Repair"
+                        },
+                        {
+                          "category_id": 30,
+                          "name": "Used Car Dealer"
+                        },
+                        {
+                          "category_id": 34,
+                          "name": "VW Dealer"
+                        },
+                        {
+                          "category_id": 24,
+                          "name": "Wheel & Rim Repair"
+                        },
+                        {
+                          "category_id": 73,
+                          "name": "Window Tinting"
+                        },
+                        {
+                          "category_id": 5,
+                          "name": "Windshield Repair"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
           }
         },
         "operationId": "get-categories.-format",
@@ -1900,7 +3365,216 @@
         ],
         "responses": {
           "200": {
-            "description": "Success!"
+            "description": "Success!",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "current_page": {
+                      "type": "integer"
+                    },
+                    "per_page": {
+                      "type": "integer"
+                    },
+                    "total_entries": {
+                      "type": "integer"
+                    },
+                    "total_pages": {
+                      "type": "integer"
+                    },
+                    "users": {
+                      "type": "array",
+                      "uniqueItems": true,
+                      "minItems": 1,
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "first_name": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "last_name": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "email_address": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "external_id": {
+                            "type": "string",
+                            "minLength": 0
+                          },
+                          "state": {
+                            "type": "integer"
+                          }
+                        },
+                        "required": [
+                          "first_name",
+                          "last_name",
+                          "email_address",
+                          "state"
+                        ]
+                      }
+                    }
+                  },
+                  "required": [
+                    "current_page",
+                    "per_page",
+                    "total_entries",
+                    "total_pages",
+                    "users"
+                  ]
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "current_page": 1,
+                      "per_page": 100,
+                      "total_entries": 19,
+                      "total_pages": 1,
+                      "users": [
+                        {
+                          "first_name": "Todd ",
+                          "last_name": "Stangl",
+                          "email_address": "tstangl@gatescollision.com",
+                          "external_id": null,
+                          "state": 0
+                        },
+                        {
+                          "first_name": "Courtney ",
+                          "last_name": "Collins",
+                          "email_address": "ccollins@gatescollision.com",
+                          "external_id": null,
+                          "state": -1
+                        },
+                        {
+                          "first_name": "Southwest",
+                          "last_name": "Collision",
+                          "email_address": "marketing@southwestcollision.com",
+                          "external_id": null,
+                          "state": -1
+                        },
+                        {
+                          "first_name": "Jennifer",
+                          "last_name": "Anderson",
+                          "email_address": "janderson@gatessolutions.com",
+                          "external_id": null,
+                          "state": -1
+                        },
+                        {
+                          "first_name": "Francesca",
+                          "last_name": "Spallato",
+                          "email_address": "fspallato@gatessolutions.com",
+                          "external_id": null,
+                          "state": -1
+                        },
+                        {
+                          "first_name": "Tamara",
+                          "last_name": "Martin",
+                          "email_address": "tmartin@gatessolutions.com",
+                          "external_id": null,
+                          "state": -1
+                        },
+                        {
+                          "first_name": "Derek ",
+                          "last_name": "Lenz",
+                          "email_address": "dlenz@gatessolutions.com",
+                          "external_id": null,
+                          "state": -1
+                        },
+                        {
+                          "first_name": "Jane",
+                          "last_name": "Killary",
+                          "email_address": "jkillary@gatessolutions.com",
+                          "external_id": null,
+                          "state": -1
+                        },
+                        {
+                          "first_name": "Donnovan ",
+                          "last_name": "Moen",
+                          "email_address": "dmoen@gatessolutions.com",
+                          "external_id": null,
+                          "state": -1
+                        },
+                        {
+                          "first_name": "Shayne",
+                          "last_name": "Campbell",
+                          "email_address": "scampbell@gatescollision.com",
+                          "external_id": null,
+                          "state": -1
+                        },
+                        {
+                          "first_name": "Ed",
+                          "last_name": "Garcia",
+                          "email_address": "prestautobody@aol.com",
+                          "external_id": null,
+                          "state": -1
+                        },
+                        {
+                          "first_name": "Jeremy",
+                          "last_name": "Hoke",
+                          "email_address": "custombodyworks@embarqmail.com",
+                          "external_id": null,
+                          "state": 0
+                        },
+                        {
+                          "first_name": "Mark",
+                          "last_name": "Davidson",
+                          "email_address": "markdavidson@davidsonautobody.com",
+                          "external_id": null,
+                          "state": 0
+                        },
+                        {
+                          "first_name": "Laura",
+                          "last_name": "Kelly",
+                          "email_address": "info@firstchoicecollision.com",
+                          "external_id": null,
+                          "state": 0
+                        },
+                        {
+                          "first_name": "Mike",
+                          "last_name": "Whelan",
+                          "email_address": "MIKE@BAYCUSTOMAUTO.COM",
+                          "external_id": null,
+                          "state": -2
+                        },
+                        {
+                          "first_name": "Tony",
+                          "last_name": "Polo",
+                          "email_address": "polocollision@gmail.com",
+                          "external_id": null,
+                          "state": 0
+                        },
+                        {
+                          "first_name": "Michelle",
+                          "last_name": "Arbisi",
+                          "email_address": "marbisi@crash1.com",
+                          "external_id": null,
+                          "state": 0
+                        },
+                        {
+                          "first_name": "Robert ",
+                          "last_name": "Whelan",
+                          "email_address": "baycustom@yahoo.com",
+                          "external_id": null,
+                          "state": -2
+                        },
+                        {
+                          "first_name": "Troy",
+                          "last_name": "Aldrich",
+                          "email_address": "troy@marquisautobody.com",
+                          "external_id": "",
+                          "state": -2
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
           }
         },
         "operationId": "get-users.-format",
@@ -2365,7 +4039,58 @@
         ],
         "responses": {
           "200": {
-            "description": "Success!"
+            "description": "Success!",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "current_page": {
+                      "type": "integer"
+                    },
+                    "per_page": {
+                      "type": "integer"
+                    },
+                    "total_entries": {
+                      "type": "integer"
+                    },
+                    "total_pages": {
+                      "type": "integer"
+                    },
+                    "surveys": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "current_page",
+                    "per_page",
+                    "total_entries",
+                    "total_pages",
+                    "surveys"
+                  ]
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "current_page": 1,
+                      "per_page": 100,
+                      "total_entries": 0,
+                      "total_pages": 1,
+                      "surveys": []
+                    }
+                  }
+                }
+              }
+            }
           }
         },
         "operationId": "get-surveys.-format",
@@ -3011,7 +4736,7 @@
               "type": "string"
             },
             "in": "query",
-            "name": "sr[​n​][custom_fields][​field_identifier]​ ",
+            "name": "sr[​n​][custom_fields][​field_identifier]​ s",
             "description": "a value for any partner-specific custom fields, replacing ​field_identifier w​ ith the appropriate value. Multiple custom fields can be specified."
           }
         ]
